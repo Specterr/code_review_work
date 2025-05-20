@@ -13,19 +13,18 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        java-version: [11, 17, 21]
+        version: [11, 17, 21]
     runs-on: ${{ matrix.os }}
-    permissions:
-      contents: read
+
       
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Make gradlew executable
         run: chmod +x gradlew
-      - name: Set up JDK ${{ matrix.java-varsion }}
-        uses: actions/setup-java@v3
+      - name: Set up JDK ${{ matrix.version }}
+        uses: actions/setup-java@v4
         with:
-          java-version: ${{ matrix.java-varsion }}
+          version: ${{ matrix.version }}
           distribution: 'temurin'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 
@@ -38,18 +37,18 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        java-version: [11, 17, 21]
+        version: [11, 17, 21]
     runs-on: ${{ matrix.os }}
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Make gradlew executable
       run: chmod +x gradlew
-    - name: Set up JDK ${{ matrix.java-varsion }}
-      uses: actions/setup-java@v3 
+    - name: Set up JDK ${{ matrix.version }}
+      uses: actions/setup-java@v4 
       with: 
-        java-version: ${{matrix.java-varsion}}
+        version: ${{matrix.version}}
         distribution: 'temurin'
     - name: Generate and submit dependency graph
-      uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v3.0.0
+      uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
