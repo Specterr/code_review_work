@@ -13,7 +13,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macos-latest]
+        os: [windows-latest]
         version: [17]
     runs-on: ${{ matrix.os }}
 
@@ -36,7 +36,7 @@ jobs:
   dependency-submission:
     strategy:
       matrix:
-        os: [macos-latest]
+        os: [windows-latest]
         version: [17]
     runs-on: ${{ matrix.os }}
     permissions:
