@@ -10,9 +10,15 @@ on:
     
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix-os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        java-version: [10, 12, 14]
+
     permissions:
       contents: read
+      
     steps:
       - uses: actions/checkout@v4
       - name: Make gradlew executable
@@ -28,8 +34,13 @@ jobs:
         run: ./gradlew clean
       - name: Build with Gradle Wrapper
         run: ./gradlew build
+        
   dependency-submission:
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix-os}}
+      strategy:
+        matrix:
+          os: [ubuntu-latest, macos-latest, windows-latest]
+          java-version: [10, 12, 14]
     permissions:
       contents: write
     steps:
