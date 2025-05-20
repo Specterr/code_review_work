@@ -4,6 +4,10 @@ on:
     branches: [ "ustinovami" ] 
   pull_request:
     branches: [ "ustinovami" ]
+  schedule:
+   - cron: '30 12 * * 3' #в среду в 12:30
+   - cron: '0 22 * * 5' #в пятницу в 22:00
+    
 jobs:
   build:
     runs-on: ubuntu-latest
