@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        java-version: [10, 12, 14]
+        java-version: [11, 13, 17]
 
     permissions:
       contents: read
@@ -26,7 +26,7 @@ jobs:
       - name: Set up JDK 11
         uses: actions/setup-java@v4
         with:
-          java-version: '11'
+          java-version: ${{matrix.java-varsion}}
           distribution: 'temurin'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 
@@ -40,7 +40,7 @@ jobs:
       strategy:
         matrix:
           os: [ubuntu-latest, macos-latest, windows-latest]
-          java-version: [10, 12, 14]
+          java-version: [11, 13, 17]
     permissions:
       contents: write
     steps:
@@ -50,7 +50,7 @@ jobs:
     - name: Set up JDK 11
       uses: actions/setup-java@v4 
       with: 
-        java-version: '11'
+        java-version: ${{matrix.java-varsion}}
         distribution: 'temurin'
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
