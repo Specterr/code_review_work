@@ -13,8 +13,8 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
-        version: [17, 21]
+        os: [macos-latest]
+        version: [17]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -36,8 +36,8 @@ jobs:
   dependency-submission:
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
-        version: [17, 21]
+        os: [macos-latest]
+        version: [17]
     runs-on: ${{ matrix.os }}
     permissions:
       contents: write
